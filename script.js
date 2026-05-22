@@ -1,5 +1,5 @@
 const text =
-  "Pehli baar tumse baat hui... aur dil ne bola, yeh wali special hai ❤️";
+  "maine mehnath se banaya hai okay🥺🥺🥺🥺 ❤️";
 
 let i = 0;
 
