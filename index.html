@@ -1,0 +1,154 @@
+# Jasmine Bollywood Love Website
+
+## index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Jasmine ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="petals"></div>
+  <section class="hero">
+    <h1>Jasmine ❤️ Shareeq</h1>
+    <p id="typewriter"></p>
+    <button onclick="showLetter()">Secret Message 💌</button>
+  </section>
+
+  <section class="timer-section">
+    <h2>Hum kitne time se saath hain ⏳</h2>
+    <div id="timer"></div>
+  </section>
+
+  <section class="gallery">
+    <h2>Hamari Yaadein 📸</h2>
+    <div class="photos">
+      <div class="photo">Add Photo 1</div>
+      <div class="photo">Add Photo 2</div>
+      <div class="photo">Add Photo 3</div>
+    </div>
+  </section>
+
+  <div id="letter" class="hidden popup">
+    <h2>Jasmine ke liye 💖</h2>
+    <p>
+      Pata nahi kaise... but 4 May, 11:06 AM ko meri duniya aur khoobsurat ho gayi.
+      I loveeeee youuuuu jaaaaannnnnnuuuuuuuuu ❤️
+      Tum meri kahaani ho.
+    </p>
+    <button onclick="hideLetter()">Close</button>
+  </div>
+
+  <section class="ending">
+    <h2>Har Bollywood story ki heroine hoti hai... meri Jasmine hai ❤️</h2>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+## style.css
+
+```css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffdfe8, #f5e6ff, #fff0d9);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.hero, .timer-section, .gallery, .ending {
+  padding: 60px 20px;
+}
+
+h1, h2 {
+  animation: fadeIn 2s ease;
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.hidden { display:none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+```
+
+## script.js
+
+```javascript
+const text = "Pehli baar tumse baat hui... aur dil ne bola, yeh wali special hai ❤️";
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 70);
+  }
+}
+typeWriter();
+
+function updateTimer() {
+  const start = new Date("2026-05-04T11:06:00");
+  const now = new Date();
+  const diff = now - start;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("timer").innerText = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
+}
+setInterval(updateTimer, 1000);
+updateTimer();
+
+function showLetter() {
+  document.getElementById("letter").classList.remove("hidden");
+}
+function hideLetter() {
+  document.getElementById("letter").classList.add("hidden");
+}
+```
