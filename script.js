@@ -14,7 +14,7 @@ function typeWriter() {
 typeWriter();
 
 function updateTimer() {
-  const start = new Date("2026-05-04T11:06:00");
+  const start = new Date("2024-05-04T11:06:00");
   const now = new Date();
   const diff = now - start;
 
